@@ -731,22 +731,29 @@
             }
 
             // ===== API =====
-            async function apiCall(action, payload) {
-                const url = API_BASE + '?action=' + encodeURIComponent(action);
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload),
-                    });
-                    if (!response.ok) throw new Error('HTTP ' + response.status);
-                    return await response.json();
-                } catch (err) {
-                    console.error('API call failed:', err);
-                    throw new Error('Failed to connect to the server. Make sure Google Apps Script is set up correctly.');
-                }
-            }
+async function apiCall(action, payload) {
+    const url = API_BASE + '?action=' + encodeURIComponent(action);
+    try {
+        // بناء بيانات النموذج (x-www-form-urlencoded)
+        const formData = new URLSearchParams();
+        for (const [key, value] of Object.entries(payload)) {
+            formData.append(key, value);
+        }
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString(),
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.error('API call failed:', err);
+        throw new Error('Failed to connect to the server. Make sure Google Apps Script is set up correctly.');
+    }
+}
 
             async function registerCustomer(name, phone, email) {
                 return await apiCall('register', { name, phone, email });
