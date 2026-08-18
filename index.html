@@ -11,10 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
 
     <style>
-        /* ========== نفس الـ CSS السابق بدون تغيير ========== */
+        /* ============================================================
+                   ROOT & RESET
+                   ============================================================ */
         *,
         *::before,
-        *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --coffee-dark: #3D2B1F;
             --coffee-brown: #6F4E37;
@@ -34,7 +41,11 @@
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
         }
-        html { scroll-behavior: smooth; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-sans);
             background: var(--coffee-latte);
@@ -48,6 +59,10 @@
             padding: 20px;
             color: var(--coffee-dark);
         }
+
+        /* ============================================================
+                   APP WRAPPER
+                   ============================================================ */
         .app-wrapper {
             width: 100%;
             max-width: 820px;
@@ -61,6 +76,7 @@
             border: 1px solid rgba(201, 168, 76, 0.15);
             transition: var(--transition);
         }
+
         .app-wrapper::before {
             content: '';
             position: absolute;
@@ -72,6 +88,7 @@
             border-radius: 50%;
             pointer-events: none;
         }
+
         .app-wrapper::after {
             content: '';
             position: absolute;
@@ -83,6 +100,10 @@
             border-radius: 50%;
             pointer-events: none;
         }
+
+        /* ============================================================
+                   HEADER
+                   ============================================================ */
         .header {
             display: flex;
             align-items: center;
@@ -93,11 +114,13 @@
             flex-wrap: wrap;
             gap: 12px;
         }
+
         .logo-group {
             display: flex;
             align-items: center;
             gap: 14px;
         }
+
         .logo-icon {
             width: 52px;
             height: 52px;
@@ -113,6 +136,7 @@
             font-weight: 700;
             flex-shrink: 0;
         }
+
         .logo-text {
             font-family: var(--font-serif);
             font-weight: 700;
@@ -121,6 +145,7 @@
             color: var(--coffee-dark);
             line-height: 1.1;
         }
+
         .logo-text span {
             display: block;
             font-family: var(--font-sans);
@@ -131,6 +156,7 @@
             color: var(--coffee-medium);
             margin-top: 2px;
         }
+
         .badge {
             background: var(--gold);
             color: var(--coffee-dark);
@@ -143,6 +169,10 @@
             box-shadow: 0 2px 8px rgba(201, 168, 76, 0.3);
             font-family: var(--font-sans);
         }
+
+        /* ============================================================
+                   TYPOGRAPHY
+                   ============================================================ */
         .section-title {
             font-family: var(--font-serif);
             font-weight: 600;
@@ -152,6 +182,7 @@
             position: relative;
             z-index: 2;
         }
+
         .section-sub {
             font-size: 14px;
             color: var(--coffee-medium);
@@ -160,15 +191,34 @@
             z-index: 2;
             line-height: 1.6;
         }
+
         .section-sub strong {
             color: var(--coffee-brown);
             font-weight: 600;
         }
+
+        .coffee-deco {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 8px 0 4px;
+            font-size: 14px;
+            color: var(--coffee-medium);
+            opacity: 0.5;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================================
+                   FORMS
+                   ============================================================ */
         .form-group {
             margin-bottom: 18px;
             position: relative;
             z-index: 2;
         }
+
         .form-group label {
             display: block;
             font-size: 13px;
@@ -177,14 +227,17 @@
             margin-bottom: 5px;
             letter-spacing: 0.3px;
         }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
+
         .form-row .form-group {
             margin-bottom: 0;
         }
+
         input {
             width: 100%;
             padding: 14px 18px;
@@ -197,18 +250,25 @@
             transition: var(--transition);
             outline: none;
         }
+
         input:focus {
             border-color: var(--gold);
             box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.15);
         }
+
         input::placeholder {
             color: #B8A69A;
             font-weight: 300;
         }
+
         input:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
+
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -227,54 +287,89 @@
             min-height: 54px;
             letter-spacing: 0.3px;
         }
+
         .btn-primary {
             background: var(--coffee-brown);
             color: var(--cream);
             box-shadow: 0 4px 16px rgba(111, 78, 55, 0.25);
         }
+
         .btn-primary:hover:not(:disabled) {
             background: var(--coffee-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 28px rgba(61, 43, 31, 0.25);
         }
+
         .btn-primary:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
+
         .btn-gold {
             background: var(--gold);
             color: var(--coffee-dark);
             box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
         }
+
         .btn-gold:hover:not(:disabled) {
             background: #B8963E;
             transform: translateY(-2px);
             box-shadow: 0 8px 28px rgba(201, 168, 76, 0.35);
         }
+
         .btn-gold:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
         }
+
         .btn-outline {
             background: transparent;
             color: var(--coffee-brown);
             border: 2px solid var(--coffee-brown);
         }
+
         .btn-outline:hover:not(:disabled) {
             background: var(--coffee-brown);
             color: var(--cream);
         }
+
         .btn-block {
             width: 100%;
             justify-content: center;
         }
+
         .btn-sm {
             padding: 10px 20px;
             font-size: 13px;
             min-height: 44px;
         }
+
+        .btn .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        .btn-gold .spinner {
+            border-color: rgba(61, 43, 31, 0.2);
+            border-top-color: var(--coffee-dark);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ============================================================
+                   STATUS BOX
+                   ============================================================ */
         .status-box {
             padding: 16px 20px;
             border-radius: var(--radius-sm);
@@ -288,37 +383,54 @@
             border: 1px solid transparent;
             animation: fadeSlide 0.4s ease;
         }
+
         .status-box.show {
             display: flex;
         }
+
         .status-box.info {
             background: rgba(201, 168, 76, 0.12);
             border-color: rgba(201, 168, 76, 0.25);
             color: var(--coffee-dark);
         }
+
         .status-box.success {
             background: rgba(111, 78, 55, 0.08);
             border-color: rgba(111, 78, 55, 0.15);
             color: var(--coffee-dark);
         }
+
         .status-box.error {
             background: rgba(200, 70, 70, 0.08);
             border-color: rgba(200, 70, 70, 0.15);
             color: #8B3A3A;
         }
+
         .status-box.warning {
             background: rgba(201, 168, 76, 0.15);
             border-color: rgba(201, 168, 76, 0.3);
             color: var(--coffee-dark);
         }
+
         .status-box .icon {
             font-size: 22px;
             flex-shrink: 0;
         }
+
         @keyframes fadeSlide {
-            0% { opacity: 0; transform: translateY(-8px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
+        /* ============================================================
+                   WHEEL
+                   ============================================================ */
         .wheel-section {
             margin: 24px 0 16px;
             position: relative;
@@ -327,9 +439,11 @@
             flex-direction: column;
             align-items: center;
         }
+
         .wheel-section.show {
             display: flex;
         }
+
         .wheel-container {
             position: relative;
             width: 100%;
@@ -337,6 +451,7 @@
             aspect-ratio: 1 / 1;
             margin: 0 auto 24px;
         }
+
         .wheel-container canvas {
             width: 100% !important;
             height: 100% !important;
@@ -347,6 +462,7 @@
             background: var(--coffee-cream);
             touch-action: none;
         }
+
         .wheel-pointer {
             position: absolute;
             top: -14px;
@@ -359,6 +475,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             pointer-events: none;
         }
+
         .wheel-center {
             position: absolute;
             top: 50%;
@@ -380,10 +497,12 @@
             pointer-events: none;
             z-index: 4;
         }
+
         .wheel-center span {
             font-size: 14px;
             letter-spacing: 1px;
         }
+
         .wheel-actions {
             display: flex;
             gap: 14px;
@@ -392,9 +511,14 @@
             width: 100%;
             margin-top: 4px;
         }
+
         .wheel-actions .btn {
             min-width: 140px;
         }
+
+        /* ============================================================
+                   RESULT OVERLAY
+                   ============================================================ */
         .result-overlay {
             position: fixed;
             inset: 0;
@@ -407,13 +531,20 @@
             padding: 24px;
             animation: fadeIn 0.4s ease;
         }
+
         .result-overlay.show {
             display: flex;
         }
+
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
+
         .result-card {
             background: var(--cream);
             border-radius: var(--radius);
@@ -427,6 +558,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .result-card::before {
             content: '';
             position: absolute;
@@ -437,16 +569,25 @@
             background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
             border-radius: 50%;
         }
+
         @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.92) translateY(20px); }
-            100% { opacity: 1; transform: scale(1) translateY(0); }
+            0% {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
+
         .result-card .emoji-big {
             font-size: 68px;
             display: block;
             margin-bottom: 12px;
             line-height: 1.2;
         }
+
         .result-card .title {
             font-family: var(--font-serif);
             font-size: 26px;
@@ -454,12 +595,14 @@
             color: var(--coffee-dark);
             margin-bottom: 4px;
         }
+
         .result-card .sub {
             font-size: 16px;
             color: var(--coffee-medium);
             margin-bottom: 24px;
             line-height: 1.6;
         }
+
         .result-card .prize-name {
             display: inline-block;
             background: var(--gold);
@@ -471,74 +614,122 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
         }
+
         .result-card .btn {
             min-width: 160px;
         }
-        .spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2.5px solid rgba(255, 255, 255, 0.25);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
+
+        /* ============================================================
+                   UTILITY
+                   ============================================================ */
+        .hidden {
+            display: none !important;
         }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-        .btn .spinner {
-            width: 18px;
-            height: 18px;
-            border-width: 2px;
+        ::-webkit-scrollbar-track {
+            background: var(--coffee-latte);
         }
+        ::-webkit-scrollbar-thumb {
+            background: var(--coffee-medium);
+            border-radius: 10px;
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
         @media (max-width: 640px) {
-            .app-wrapper { padding: 24px 18px 28px; border-radius: 24px; }
-            .logo-text { font-size: 22px; }
-            .logo-icon { width: 42px; height: 42px; font-size: 20px; }
-            .form-row { grid-template-columns: 1fr; }
-            .header { margin-bottom: 20px; }
-            .section-title { font-size: 19px; }
-            .wheel-container { max-width: 300px; }
-            .wheel-center { width: 44px; height: 44px; font-size: 14px; }
-            .wheel-center span { font-size: 11px; }
-            .wheel-pointer { font-size: 30px; top: -10px; }
-            .result-card { padding: 32px 20px 28px; }
-            .result-card .emoji-big { font-size: 48px; }
-            .result-card .title { font-size: 22px; }
-            .btn { padding: 12px 20px; font-size: 14px; min-height: 48px; }
-            .wheel-actions .btn { min-width: 120px; }
-            .badge { font-size: 10px; padding: 4px 12px; }
+            .app-wrapper {
+                padding: 24px 18px 28px;
+                border-radius: 24px;
+            }
+            .logo-text {
+                font-size: 22px;
+            }
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                margin-bottom: 20px;
+            }
+            .section-title {
+                font-size: 19px;
+            }
+            .wheel-container {
+                max-width: 300px;
+            }
+            .wheel-center {
+                width: 44px;
+                height: 44px;
+                font-size: 14px;
+            }
+            .wheel-center span {
+                font-size: 11px;
+            }
+            .wheel-pointer {
+                font-size: 30px;
+                top: -10px;
+            }
+            .result-card {
+                padding: 32px 20px 28px;
+            }
+            .result-card .emoji-big {
+                font-size: 48px;
+            }
+            .result-card .title {
+                font-size: 22px;
+            }
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-height: 48px;
+            }
+            .wheel-actions .btn {
+                min-width: 120px;
+            }
+            .badge {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
         }
+
         @media (max-width: 400px) {
-            .app-wrapper { padding: 16px 12px 20px; }
-            .wheel-container { max-width: 240px; }
-            .wheel-center { width: 36px; height: 36px; font-size: 12px; border-width: 3px; }
-            .wheel-center span { font-size: 9px; }
-            .wheel-pointer { font-size: 24px; top: -8px; }
+            .app-wrapper {
+                padding: 16px 12px 20px;
+            }
+            .wheel-container {
+                max-width: 240px;
+            }
+            .wheel-center {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+                border-width: 3px;
+            }
+            .wheel-center span {
+                font-size: 9px;
+            }
+            .wheel-pointer {
+                font-size: 24px;
+                top: -8px;
+            }
         }
-        .coffee-deco {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin: 8px 0 4px;
-            font-size: 14px;
-            color: var(--coffee-medium);
-            opacity: 0.5;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 2;
-        }
-        .hidden { display: none !important; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--coffee-latte); }
-        ::-webkit-scrollbar-thumb { background: var(--coffee-medium); border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="app-wrapper" id="app">
 
-        <!-- HEADER -->
+        <!-- ============================================================
+        HEADER
+        ============================================================ -->
         <header class="header">
             <div class="logo-group">
                 <div class="logo-icon">C</div>
@@ -553,7 +744,7 @@
         <div class="coffee-deco">✦ • ✦ • ✦</div>
 
         <!-- ============================================================
-        STEP 2 – REGISTER (الآن هي الخطوة الأولى والوحيدة)
+        STEP 1 – REGISTER
         ============================================================ -->
         <div id="stepRegister">
             <h2 class="section-title">✨ Join the Draw</h2>
@@ -588,7 +779,7 @@
         </div>
 
         <!-- ============================================================
-        STEP 3 – WHEEL
+        STEP 2 – WHEEL
         ============================================================ -->
         <div id="stepWheel" class="hidden">
             <h2 class="section-title">🎡 Spin the Wheel</h2>
@@ -616,24 +807,28 @@
         </div>
 
         <!-- ============================================================
-        STEP 4 – ALREADY SPUN (لن تظهر إلا إذا كان المستخدم قد سجل مسبقاً – لكننا لا نستخدم التحقق الآن)
+        STEP 3 – ALREADY PARTICIPATED
         ============================================================ -->
         <div id="stepAlreadySpun" class="hidden">
             <h2 class="section-title">🙏 Thank You!</h2>
             <p class="section-sub">
-                You have already participated. You can check our daily offers at
-                <strong>CACOVA</strong> ☕
+                You have already participated in our promotion. Visit <strong>CACOVA</strong> ☕ to enjoy your prize!
             </p>
-            <div style="text-align:center; padding:20px 0 8px; font-size:48px;">🎁</div>
-            <p style="text-align:center; color:var(--coffee-medium); font-size:14px;">
-                Your prize: <strong id="alreadyPrize">-</strong>
+            <div style="text-align:center; padding:20px 0 8px; font-size:64px;" id="alreadyEmoji">🎁</div>
+            <p style="text-align:center; color:var(--coffee-dark); font-size:18px; font-weight:600;">
+                Your Prize: <strong id="alreadyPrize">-</strong>
             </p>
-            <button class="btn btn-outline btn-block" style="margin-top:16px;" id="resetAppBtn">
+            <p style="text-align:center; color:var(--coffee-medium); font-size:14px; margin-top:6px;">
+                Thank you for being part of the CACOVA family! ☕
+            </p>
+            <button class="btn btn-outline btn-block" style="margin-top:20px;" id="resetAppBtn">
                 🔄 Back to Start
             </button>
         </div>
 
-        <!-- RESULT OVERLAY -->
+        <!-- ============================================================
+        RESULT OVERLAY
+        ============================================================ -->
         <div class="result-overlay" id="resultOverlay">
             <div class="result-card">
                 <span class="emoji-big" id="resultEmoji">🎉</span>
@@ -651,17 +846,21 @@
     </div>
 
     <!-- ============================================================
-    JAVASCRIPT – معدل بالكامل
+    JAVASCRIPT – Single-file Vanilla JS
     ============================================================ -->
     <script>
         (function() {
             'use strict';
 
-            // ★★★ ضع رابط الـ Web App هنا ★★★
-            const API_BASE = 'https://script.google.com/macros/s/AKfycbw0hzwB08F4R38Ypx1M7ssynFsUPwXIOI7dqpL1ztxDhIQxc-YE6nPhmB0wEoLZfEIT/exec';
+            // ============================================================
+            // ★★★ CONFIGURATION – UPDATE THIS URL ★★★
+            // ============================================================
+            const API_BASE =
+                'https://script.google.com/macros/s/AKfycbw0hzwB08F4R38Ypx1M7ssynFsUPwXIOI7dqpL1ztxDhIQxc-YE6nPhmB0wEoLZfEIT/exec';
 
-            
-            // الجوائز
+            // ============================================================
+            // PRIZES (6 segments)
+            // ============================================================
             const PRIZES = [
                 { label: '☕ Free Coffee', color: '#8B6B4A', emoji: '☕' },
                 { label: '🎯 20% Off', color: '#C9A84C', emoji: '🎯' },
@@ -671,14 +870,19 @@
                 { label: '🔄 Lucky Spin', color: '#E8D5C0', emoji: '🔄' },
             ];
 
-            // ===== State =====
+            // ============================================================
+            // STATE
+            // ============================================================
             let currentPhone = '';
             let currentName = '';
+            let currentEmail = '';
             let wheelAngle = 0;
             let wheelSpinning = false;
             let prizeResult = null;
 
-            // ===== DOM =====
+            // ============================================================
+            // DOM REFS
+            // ============================================================
             const $ = (id) => document.getElementById(id);
 
             const stepRegister = $('stepRegister');
@@ -700,6 +904,7 @@
             const wheelUserName = $('wheelUserName');
 
             const alreadyPrize = $('alreadyPrize');
+            const alreadyEmoji = $('alreadyEmoji');
             const resetAppBtn = $('resetAppBtn');
 
             const resultOverlay = $('resultOverlay');
@@ -708,12 +913,22 @@
             const resultSub = $('resultSub');
             const resultCloseBtn = $('resultCloseBtn');
 
-            // ===== Utilities =====
-            function showStatus(el, text, type = 'info') {
+            // ============================================================
+            // UTILITY FUNCTIONS
+            // ============================================================
+            function showStatus(el, text, type) {
+                type = type || 'info';
                 el.className = 'status-box show ' + type;
-                const iconMap = { 'success': '✅', 'error': '❌', 'warning': '⚠️', 'info': '📌' };
-                el.querySelector('.icon').textContent = iconMap[type] || '📌';
-                el.querySelector('span:last-child').textContent = text;
+                const iconMap = {
+                    'success': '✅',
+                    'error': '❌',
+                    'warning': '⚠️',
+                    'info': '📌'
+                };
+                const iconEl = el.querySelector('.icon');
+                if (iconEl) iconEl.textContent = iconMap[type] || '📌';
+                const textEl = el.querySelector('span:last-child');
+                if (textEl) textEl.textContent = text;
             }
 
             function hideStatus(el) {
@@ -731,49 +946,69 @@
                 }
             }
 
-            // ===== API =====
-async function apiCall(action, payload) {
-    const url = API_BASE + '?action=' + encodeURIComponent(action);
-    try {
-        const formData = new URLSearchParams();
-        for (const [key, value] of Object.entries(payload)) {
-            formData.append(key, value);
-        }
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: formData.toString(),
-        });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const text = await response.text();
-        try {
-            return JSON.parse(text);
-        } catch (e) {
-            console.error('Response text:', text);
-            throw new Error('Invalid JSON response from server');
-        }
-    } catch (err) {
-        console.error('API call failed:', err);
-        throw new Error('Failed to connect to the server. Make sure Google Apps Script is set up correctly.');
-    }
-}
+            function showStep(step) {
+                [stepRegister, stepWheel, stepAlreadySpun].forEach(el => {
+                    if (el) el.classList.add('hidden');
+                });
+                if (step) step.classList.remove('hidden');
+            }
 
+            // ============================================================
+            // API CALL
+            // ============================================================
+            async function apiCall(action, payload) {
+                const url = API_BASE + '?action=' + encodeURIComponent(action);
+                try {
+                    const formData = new URLSearchParams();
+                    for (const [key, value] of Object.entries(payload)) {
+                        if (value !== undefined && value !== null) {
+                            formData.append(key, String(value));
+                        }
+                    }
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData.toString(),
+                    });
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    const text = await response.text();
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Response text:', text);
+                        throw new Error('Invalid JSON response from server');
+                    }
+                } catch (err) {
+                    console.error('API call failed:', err);
+                    throw new Error('Failed to connect to the server. Please check your Google Apps Script URL.');
+                }
+            }
+
+            // ============================================================
+            // REGISTER + CHECK
+            // ============================================================
             async function registerCustomer(name, phone, email) {
                 return await apiCall('register', { name, phone, email });
             }
 
+            // ============================================================
+            // SAVE SPIN RESULT
+            // ============================================================
             async function saveSpinResult(phone, prize) {
                 return await apiCall('spin', { phone, prize });
             }
 
-            // ===== Wheel =====
+            // ============================================================
+            // WHEEL DRAWING
+            // ============================================================
             const ctx = wheelCanvas.getContext('2d');
             const numSegments = PRIZES.length;
             const segmentAngle = (2 * Math.PI) / numSegments;
 
-            function drawWheel(rotation = 0) {
+            function drawWheel(rotation) {
+                rotation = rotation || 0;
                 const w = wheelCanvas.width;
                 const h = wheelCanvas.height;
                 const cx = w / 2;
@@ -781,6 +1016,8 @@ async function apiCall(action, payload) {
                 const radius = Math.min(w, h) / 2 - 12;
 
                 ctx.clearRect(0, 0, w, h);
+
+                // subtle background glow
                 const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
                 grad.addColorStop(0, 'rgba(255,245,235,0.2)');
                 grad.addColorStop(1, 'rgba(61,43,31,0.05)');
@@ -789,6 +1026,7 @@ async function apiCall(action, payload) {
                 ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
                 ctx.fill();
 
+                // draw segments
                 for (let i = 0; i < numSegments; i++) {
                     const start = rotation + i * segmentAngle;
                     const end = start + segmentAngle;
@@ -804,6 +1042,7 @@ async function apiCall(action, payload) {
                     ctx.lineWidth = 2;
                     ctx.stroke();
 
+                    // label
                     const mid = start + segmentAngle / 2;
                     const labelRadius = radius * 0.68;
                     const lx = cx + Math.cos(mid) * labelRadius;
@@ -819,17 +1058,19 @@ async function apiCall(action, payload) {
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
 
-                    const lines = PRIZES[i].label.split(' ');
-                    if (lines.length === 1) {
-                        ctx.fillText(lines[0], 0, 0);
+                    const label = PRIZES[i].label;
+                    const parts = label.split(' ');
+                    if (parts.length === 1) {
+                        ctx.fillText(parts[0], 0, 0);
                     } else {
                         ctx.font = 'bold 14px "Inter", sans-serif';
-                        ctx.fillText(lines[0], 0, -10);
-                        ctx.fillText(lines.slice(1).join(' '), 0, 14);
+                        ctx.fillText(parts[0], 0, -10);
+                        ctx.fillText(parts.slice(1).join(' '), 0, 14);
                     }
                     ctx.restore();
                 }
 
+                // inner ring
                 ctx.beginPath();
                 ctx.arc(cx, cy, radius * 0.15, 0, 2 * Math.PI);
                 ctx.fillStyle = 'rgba(61,43,31,0.05)';
@@ -838,24 +1079,29 @@ async function apiCall(action, payload) {
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
+                // outer ring
                 ctx.beginPath();
                 ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
                 ctx.strokeStyle = 'rgba(201,168,76,0.25)';
                 ctx.lineWidth = 4;
                 ctx.stroke();
 
-                for (let i = 0; i < numSegments; i++) {
-                    const a = rotation + i * segmentAngle + segmentAngle / 2;
+                // dots on rim
+                for (let i = 0; i < numSegments * 2; i++) {
+                    const a = rotation + i * (segmentAngle / 2) + segmentAngle / 4;
                     const dr = radius * 0.92;
                     const dx = cx + Math.cos(a) * dr;
                     const dy = cy + Math.sin(a) * dr;
                     ctx.beginPath();
-                    ctx.arc(dx, dy, 5, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                    ctx.arc(dx, dy, 3, 0, 2 * Math.PI);
+                    ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.4)' : 'rgba(201,168,76,0.3)';
                     ctx.fill();
                 }
             }
 
+            // ============================================================
+            // SPIN LOGIC
+            // ============================================================
             function spinWheel() {
                 if (wheelSpinning) return;
                 wheelSpinning = true;
@@ -929,13 +1175,9 @@ async function apiCall(action, payload) {
                 statusWheelText.textContent = '🔄 Wheel reset. Click "Spin" to start.';
             }
 
-            // ===== Show step =====
-            function showStep(step) {
-                [stepRegister, stepWheel, stepAlreadySpun].forEach(el => el.classList.add('hidden'));
-                if (step) step.classList.remove('hidden');
-            }
-
-            // ===== Handle Registration =====
+            // ============================================================
+            // HANDLE REGISTER
+            // ============================================================
             async function handleRegister() {
                 const name = regName.value.trim();
                 const phone = regPhone.value.trim();
@@ -961,18 +1203,69 @@ async function apiCall(action, payload) {
                     const result = await registerCustomer(name, phone, email);
                     console.log('Register result:', result);
 
-                    if (result.status === 'registered' || result.status === 'exists') {
+                    // CASE 1: User is new → registered
+                    if (result.status === 'registered') {
                         currentPhone = phone;
                         currentName = name;
+                        currentEmail = email;
                         showStep(stepWheel);
                         wheelUserName.textContent = name;
                         drawWheel(0);
                         statusWheel.className = 'status-box show info';
                         statusWheelText.textContent = '🎯 Registered successfully! Spin the wheel now.';
                         statusRegister.className = 'status-box';
-                    } else {
-                        showStatus(statusRegister, '❌ Registration failed: ' + (result.message || 'Unknown'), 'error');
+                        return;
                     }
+
+                    // CASE 2: User exists → check hasSpun
+                    if (result.status === 'exists') {
+                        const hasSpun = result.hasSpun === true;
+                        const prize = result.prize || '';
+                        const existingName = result.name || name;
+
+                        if (hasSpun && prize) {
+                            // Already spun → show prize
+                            currentPhone = phone;
+                            currentName = existingName;
+                            currentEmail = result.email || email;
+                            showStep(stepAlreadySpun);
+                            const prizeObj = PRIZES.find(p => p.label === prize) || PRIZES[0];
+                            alreadyPrize.textContent = prize || '🎁';
+                            alreadyEmoji.textContent = prizeObj.emoji || '🎁';
+                            statusRegister.className = 'status-box';
+                            return;
+                        }
+
+                        if (hasSpun && !prize) {
+                            // Edge case: hasSpun but no prize → let them spin
+                            currentPhone = phone;
+                            currentName = existingName;
+                            currentEmail = result.email || email;
+                            showStep(stepWheel);
+                            wheelUserName.textContent = existingName;
+                            drawWheel(0);
+                            statusWheel.className = 'status-box show info';
+                            statusWheelText.textContent = '🎯 Welcome back! Spin the wheel now.';
+                            statusRegister.className = 'status-box';
+                            return;
+                        }
+
+                        // User exists but hasn't spun → let them spin
+                        currentPhone = phone;
+                        currentName = existingName;
+                        currentEmail = result.email || email;
+                        showStep(stepWheel);
+                        wheelUserName.textContent = existingName;
+                        drawWheel(0);
+                        statusWheel.className = 'status-box show info';
+                        statusWheelText.textContent = '🎯 Welcome back! Spin the wheel now.';
+                        statusRegister.className = 'status-box';
+                        return;
+                    }
+
+                    // Fallback
+                    showStatus(statusRegister, '❌ Unexpected response from server.', 'error');
+
                 } catch (err) {
                     console.error(err);
                     showStatus(statusRegister, '❌ ' + err.message, 'error');
@@ -981,7 +1274,11 @@ async function apiCall(action, payload) {
                 }
             }
 
-            // ===== Event Listeners =====
+            // ============================================================
+            // EVENT LISTENERS
+            // ============================================================
+
+            // Register
             registerBtn.addEventListener('click', handleRegister);
 
             regName.addEventListener('keydown', (e) => {
@@ -994,9 +1291,11 @@ async function apiCall(action, payload) {
                 if (e.key === 'Enter') handleRegister();
             });
 
+            // Wheel
             spinBtn.addEventListener('click', spinWheel);
             resetSpinBtn.addEventListener('click', resetWheel);
 
+            // Reset app
             resetAppBtn.addEventListener('click', () => {
                 showStep(stepRegister);
                 regName.value = '';
@@ -1005,25 +1304,31 @@ async function apiCall(action, payload) {
                 hideStatus(statusRegister);
                 currentPhone = '';
                 currentName = '';
+                currentEmail = '';
                 prizeResult = null;
                 resetWheel();
             });
 
+            // Result overlay
             resultCloseBtn.addEventListener('click', () => {
                 resultOverlay.classList.remove('show');
                 showStep(stepAlreadySpun);
-                alreadyPrize.textContent = prizeResult ? prizeResult.label : '🎁';
+                const prizeLabel = prizeResult ? prizeResult.label : '🎁';
+                alreadyPrize.textContent = prizeLabel;
+                alreadyEmoji.textContent = prizeResult ? prizeResult.emoji : '🎁';
             });
 
             resultOverlay.addEventListener('click', (e) => {
                 if (e.target === resultOverlay) {
                     resultOverlay.classList.remove('show');
                     showStep(stepAlreadySpun);
-                    alreadyPrize.textContent = prizeResult ? prizeResult.label : '🎁';
+                    const prizeLabel = prizeResult ? prizeResult.label : '🎁';
+                    alreadyPrize.textContent = prizeLabel;
+                    alreadyEmoji.textContent = prizeResult ? prizeResult.emoji : '🎁';
                 }
             });
 
-            // ===== Keyboard shortcut for spin =====
+            // Keyboard shortcut: Space to spin
             document.addEventListener('keydown', (e) => {
                 if (e.key === ' ' && !stepWheel.classList.contains('hidden') && !spinBtn.disabled) {
                     e.preventDefault();
@@ -1031,9 +1336,10 @@ async function apiCall(action, payload) {
                 }
             });
 
-            // ===== INIT =====
+            // ============================================================
+            // INIT
+            // ============================================================
             function init() {
-                // نبدأ مباشرة بالتسجيل
                 showStep(stepRegister);
                 drawWheel(0);
                 hideStatus(statusRegister);
