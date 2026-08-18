@@ -734,7 +734,6 @@
 async function apiCall(action, payload) {
     const url = API_BASE + '?action=' + encodeURIComponent(action);
     try {
-        // بناء بيانات النموذج (x-www-form-urlencoded)
         const formData = new URLSearchParams();
         for (const [key, value] of Object.entries(payload)) {
             formData.append(key, value);
