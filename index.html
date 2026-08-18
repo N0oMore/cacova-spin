@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CACOVA · Speciality Coffee</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+                   ROOT & RESET
+                   ============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --coffee-dark: #3D2B1F;
+            --coffee-brown: #6F4E37;
+            --coffee-medium: #8B6B4A;
+            --coffee-light: #A67B5B;
+            --coffee-cream: #E8D5C0;
+            --coffee-latte: #F5EDE3;
+            --gold: #C9A84C;
+            --gold-light: #E8D5A0;
+            --cream: #FDF8F0;
+            --white: #FFFFFF;
+            --shadow: 0 20px 60px rgba(61, 43, 31, 0.15);
+            --shadow-sm: 0 8px 24px rgba(61, 43, 31, 0.10);
+            --radius: 28px;
+            --radius-sm: 16px;
+            --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--coffee-latte);
+            background-image:
+                radial-gradient(ellipse at 10% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 90% 80%, rgba(111, 78, 55, 0.06) 0%, transparent 60%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--coffee-dark);
+        }
+
+        /* ============================================================
+                   MAIN CARD
+                   ============================================================ */
+        .app-wrapper {
+            width: 100%;
+            max-width: 820px;
+            background: var(--cream);
+            backdrop-filter: blur(2px);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px 44px 48px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            transition: var(--transition);
+        }
+
+        .app-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .app-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(111, 78, 55, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+                   HEADER / LOGO
+                   ============================================================ */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--coffee-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--cream);
+            box-shadow: 0 4px 16px rgba(111, 78, 55, 0.25);
+            font-family: var(--font-serif);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            color: var(--coffee-dark);
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--coffee-medium);
+            margin-top: 2px;
+        }
+
+        .badge {
+            background: var(--gold);
+            color: var(--coffee-dark);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(201, 168, 76, 0.3);
+            font-family: var(--font-sans);
+        }
+
+        /* ============================================================
+                   SECTION TITLES
+                   ============================================================ */
+        .section-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--coffee-dark);
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-sub {
+            font-size: 14px;
+            color: var(--coffee-medium);
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+
+        .section-sub strong {
+            color: var(--coffee-brown);
+            font-weight: 600;
+        }
+
+        /* ============================================================
+                   FORM ELEMENTS
+                   ============================================================ */
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--coffee-dark);
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 15px;
+            font-family: var(--font-sans);
+            border: 2px solid rgba(111, 78, 55, 0.15);
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--coffee-dark);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.15);
+        }
+
+        input::placeholder {
+            color: #B8A69A;
+            font-weight: 300;
+        }
+
+        input:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            min-height: 54px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: var(--coffee-brown);
+            color: var(--cream);
+            box-shadow: 0 4px 16px rgba(111, 78, 55, 0.25);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--coffee-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(61, 43, 31, 0.25);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--coffee-dark);
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-gold:hover:not(:disabled) {
+            background: #B8963E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201, 168, 76, 0.35);
+        }
+
+        .btn-gold:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--coffee-brown);
+            border: 2px solid var(--coffee-brown);
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background: var(--coffee-brown);
+            color: var(--cream);
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 13px;
+            min-height: 44px;
+        }
+
+        /* ============================================================
+                   STATUS / MESSAGES
+                   ============================================================ */
+        .status-box {
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            margin: 16px 0 20px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid transparent;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .status-box.show {
+            display: flex;
+        }
+
+        .status-box.info {
+            background: rgba(201, 168, 76, 0.12);
+            border-color: rgba(201, 168, 76, 0.25);
+            color: var(--coffee-dark);
+        }
+
+        .status-box.success {
+            background: rgba(111, 78, 55, 0.08);
+            border-color: rgba(111, 78, 55, 0.15);
+            color: var(--coffee-dark);
+        }
+
+        .status-box.error {
+            background: rgba(200, 70, 70, 0.08);
+            border-color: rgba(200, 70, 70, 0.15);
+            color: #8B3A3A;
+        }
+
+        .status-box.warning {
+            background: rgba(201, 168, 76, 0.15);
+            border-color: rgba(201, 168, 76, 0.3);
+            color: var(--coffee-dark);
+        }
+
+        .status-box .icon {
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================
+                   WHEEL SECTION
+                   ============================================================ */
+        .wheel-section {
+            margin: 24px 0 16px;
+            position: relative;
+            z-index: 2;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wheel-section.show {
+            display: flex;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto 24px;
+        }
+
+        .wheel-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 50%;
+            box-shadow: 0 8px 40px rgba(61, 43, 31, 0.18);
+            transition: var(--transition);
+            display: block;
+            background: var(--coffee-cream);
+            touch-action: none;
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            filter: drop-shadow(0 4px 8px rgba(61, 43, 31, 0.25));
+            z-index: 5;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--coffee-dark);
+            border: 4px solid var(--gold);
+            box-shadow: 0 4px 16px rgba(61, 43, 31, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+            font-family: var(--font-serif);
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .wheel-center span {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .wheel-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .wheel-actions .btn {
+            min-width: 140px;
+        }
+
+        /* ============================================================
+                   RESULT MODAL / POPUP
+                   ============================================================ */
+        .result-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(61, 43, 31, 0.55);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 24px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .result-overlay.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .result-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 48px 44px 40px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 40px 80px rgba(61, 43, 31, 0.35);
+            animation: popIn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .result-card .emoji-big {
+            font-size: 68px;
+            display: block;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .result-card .title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--coffee-dark);
+            margin-bottom: 4px;
+        }
+
+        .result-card .sub {
+            font-size: 16px;
+            color: var(--coffee-medium);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .result-card .prize-name {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--coffee-dark);
+            padding: 8px 28px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
+        }
+
+        .result-card .btn {
+            min-width: 160px;
+        }
+
+        /* ============================================================
+                   LOADING SPINNER
+                   ============================================================ */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2.5px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn .spinner {
+            width: 18px;
+            height: 18px;
+            border-width: 2px;
+        }
+
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width: 640px) {
+            .app-wrapper {
+                padding: 24px 18px 28px;
+                border-radius: 24px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .wheel-container {
+                max-width: 300px;
+            }
+
+            .wheel-center {
+                width: 44px;
+                height: 44px;
+                font-size: 14px;
+            }
+
+            .wheel-center span {
+                font-size: 11px;
+            }
+
+            .wheel-pointer {
+                font-size: 30px;
+                top: -10px;
+            }
+
+            .result-card {
+                padding: 32px 20px 28px;
+            }
+
+            .result-card .emoji-big {
+                font-size: 48px;
+            }
+
+            .result-card .title {
+                font-size: 22px;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-height: 48px;
+            }
+
+            .wheel-actions .btn {
+                min-width: 120px;
+            }
+
+            .badge {
+                font-size: 10px;
+                padding: 4px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .app-wrapper {
+                padding: 16px 12px 20px;
+            }
+
+            .wheel-container {
+                max-width: 240px;
+            }
+
+            .wheel-center {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+                border-width: 3px;
+            }
+
+            .wheel-center span {
+                font-size: 9px;
+            }
+
+            .wheel-pointer {
+                font-size: 24px;
+                top: -8px;
+            }
+        }
+
+        /* ============================================================
+                   EXTRA DECORATIVE
+                   ============================================================ */
+        .coffee-deco {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 8px 0 4px;
+            font-size: 14px;
+            color: var(--coffee-medium);
+            opacity: 0.5;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--coffee-latte);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--coffee-medium);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+    APP WRAPPER
+    ============================================================ -->
+    <div class="app-wrapper" id="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="logo-group">
+                <div class="logo-icon">C</div>
+                <div class="logo-text">
+                    CACOVA
+                    <span>Speciality Coffee</span>
+                </div>
+            </div>
+            <div class="badge">🎯 Spin &amp; Win</div>
+        </header>
+
+        <!-- DECO -->
+        <div class="coffee-deco">✦ • ✦ • ✦</div>
+
+        <!-- ============================================================
+        STEP 1 – PHONE CHECK
+        ============================================================ -->
+        <div id="stepPhone">
+            <h2 class="section-title">Welcome to CACOVA</h2>
+            <p class="section-sub">
+                Enter your phone number to check your participation in today's prize draw 🎁
+            </p>
+
+            <div class="form-group">
+                <label for="phoneInput">📱 Phone Number</label>
+                <input
+                type="tel"
+                id="phoneInput"
+                placeholder="e.g., 501234567"
+                dir="ltr"
+                autocomplete="tel"
+                />
+            </div>
+
+            <button class="btn btn-primary btn-block" id="checkBtn">
+                Check Account
+            </button>
+
+            <div id="statusPhone" class="status-box">
+                <span class="icon">📌</span>
+                <span id="statusPhoneText">...</span>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        STEP 2 – REGISTER (if not found)
+        ============================================================ -->
+        <div id="stepRegister" class="hidden">
+            <h2 class="section-title">✨ New Registration</h2>
+            <p class="section-sub">
+                Looks like you're a new visitor! Complete your details to join the draw.
+            </p>
+
+            <div class="form-group">
+                <label for="regName">👤 Full Name</label>
+                <input type="text" id="regName" placeholder="Enter your full name" />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="regPhone">📱 Phone Number</label>
+                    <input type="tel" id="regPhone" dir="ltr" disabled />
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">✉️ Email Address</label>
+                    <input type="email" id="regEmail" placeholder="example@email.com" dir="ltr" />
+                </div>
+            </div>
+
+            <button class="btn btn-gold btn-block" id="registerBtn">
+                Register &amp; Spin
+            </button>
+
+            <div id="statusRegister" class="status-box">
+                <span class="icon">📌</span>
+                <span id="statusRegisterText">...</span>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        STEP 3 – WHEEL
+        ============================================================ -->
+        <div id="stepWheel" class="hidden">
+            <h2 class="section-title">🎡 Spin the Wheel</h2>
+            <p class="section-sub">
+                Welcome <strong id="wheelUserName">...</strong>! Click the button to spin and win one of our prizes.
+            </p>
+
+            <div class="wheel-section show" id="wheelSection">
+                <div class="wheel-container">
+                    <canvas id="wheelCanvas" width="600" height="600"></canvas>
+                    <div class="wheel-pointer">▼</div>
+                    <div class="wheel-center"><span>SPIN</span></div>
+                </div>
+
+                <div class="wheel-actions">
+                    <button class="btn btn-gold" id="spinBtn">🎰 Spin</button>
+                    <button class="btn btn-outline btn-sm" id="resetSpinBtn">↻ Reset</button>
+                </div>
+
+                <div id="statusWheel" class="status-box">
+                    <span class="icon">🎯</span>
+                    <span id="statusWheelText">Ready to spin!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        STEP 4 – ALREADY SPUN
+        ============================================================ -->
+        <div id="stepAlreadySpun" class="hidden">
+            <h2 class="section-title">🙏 Thank You!</h2>
+            <p class="section-sub">
+                You have already participated. You can check our daily offers at
+                <strong>CACOVA</strong> ☕
+            </p>
+            <div style="text-align:center; padding:20px 0 8px; font-size:48px;">
+                🎁
+            </div>
+            <p style="text-align:center; color:var(--coffee-medium); font-size:14px;">
+                Your prize: <strong id="alreadyPrize">-</strong>
+            </p>
+            <button class="btn btn-outline btn-block" style="margin-top:16px;" id="resetAppBtn">
+                🔄 Back to Start
+            </button>
+        </div>
+
+        <!-- ============================================================
+        RESULT OVERLAY (modal)
+        ============================================================ -->
+        <div class="result-overlay" id="resultOverlay">
+            <div class="result-card">
+                <span class="emoji-big" id="resultEmoji">🎉</span>
+                <div class="title">You Won!</div>
+                <div class="prize-name" id="resultPrizeName">☕ Free Coffee</div>
+                <p class="sub" id="resultSub">
+                    Congratulations! Visit CACOVA and enjoy your prize. ☕
+                </p>
+                <button class="btn btn-primary" id="resultCloseBtn">🎊 Awesome!</button>
+            </div>
+        </div>
+
+        <!-- FOOTER DECO -->
+        <div class="coffee-deco" style="margin-top:24px; opacity:0.3;">
+            ☕ ·  CACOVA  ·  ☕
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT — VANILLA
+    ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // CONFIGURATION
+            // ============================================================
+
+            // ★★★ IMPORTANT ★★★
+            // Replace this URL with your Google Apps Script Web App URL
+            // after you deploy the script (see Code.gs in the instructions).
+            const API_BASE = 'https://script.google.com/macros/s/AKfycbzT43Skgo5lBgY8cNlTcvxBudIsgBWJhSDNvvxRRq14vFHIA-aCIMLPdATysjUq31WB/exec';
+
+            // Prizes for the wheel (English labels)
+            const PRIZES = [
+                { label: '☕ Free Coffee', color: '#8B6B4A', emoji: '☕' },
+                { label: '🎯 20% Off', color: '#C9A84C', emoji: '🎯' },
+                { label: '🥐 Free Pastry', color: '#A67B5B', emoji: '🥐' },
+                { label: '🎯 50% Off', color: '#6F4E37', emoji: '🎯' },
+                { label: '🎁 Coffee Cup', color: '#D4A574', emoji: '🎁' },
+                { label: '🔄 Lucky Spin', color: '#E8D5C0', emoji: '🔄' },
+            ];
+
+            // ============================================================
+            // STATE
+            // ============================================================
+            let currentPhone = '';
+            let currentName = '';
+            let isSpinning = false;
+            let wheelAngle = 0;
+            let wheelSpinning = false;
+            let prizeResult = null;
+
+            // ============================================================
+            // DOM REFS
+            // ============================================================
+            const $ = (id) => document.getElementById(id);
+
+            const stepPhone = $('stepPhone');
+            const stepRegister = $('stepRegister');
+            const stepWheel = $('stepWheel');
+            const stepAlreadySpun = $('stepAlreadySpun');
+
+            const phoneInput = $('phoneInput');
+            const checkBtn = $('checkBtn');
+            const statusPhone = $('statusPhone');
+            const statusPhoneText = $('statusPhoneText');
+
+            const regName = $('regName');
+            const regPhone = $('regPhone');
+            const regEmail = $('regEmail');
+            const registerBtn = $('registerBtn');
+            const statusRegister = $('statusRegister');
+            const statusRegisterText = $('statusRegisterText');
+
+            const wheelCanvas = $('wheelCanvas');
+            const spinBtn = $('spinBtn');
+            const resetSpinBtn = $('resetSpinBtn');
+            const statusWheel = $('statusWheel');
+            const statusWheelText = $('statusWheelText');
+            const wheelUserName = $('wheelUserName');
+
+            const alreadyPrize = $('alreadyPrize');
+            const resetAppBtn = $('resetAppBtn');
+
+            const resultOverlay = $('resultOverlay');
+            const resultEmoji = $('resultEmoji');
+            const resultPrizeName = $('resultPrizeName');
+            const resultSub = $('resultSub');
+            const resultCloseBtn = $('resultCloseBtn');
+
+            // ============================================================
+            // UTILITY
+            // ============================================================
+            function showStatus(el, text, type = 'info') {
+                el.className = 'status-box show ' + type;
+                const iconMap = {
+                    'success': '✅',
+                    'error': '❌',
+                    'warning': '⚠️',
+                    'info': '📌'
+                };
+                el.querySelector('.icon').textContent = iconMap[type] || '📌';
+                el.querySelector('span:last-child').textContent = text;
+            }
+
+            function hideStatus(el) {
+                el.className = 'status-box';
+            }
+
+            function setLoading(btn, loading) {
+                if (loading) {
+                    btn.disabled = true;
+                    btn._origText = btn.innerHTML;
+                    btn.innerHTML = '<span class="spinner"></span> Loading ...';
+                } else {
+                    btn.disabled = false;
+                    if (btn._origText) btn.innerHTML = btn._origText;
+                }
+            }
+
+            function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            // ============================================================
+            // API CALLS (to Google Apps Script)
+            // ============================================================
+            async function apiCall(action, payload) {
+                const url = API_BASE + '?action=' + encodeURIComponent(action);
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    const data = await response.json();
+                    return data;
+                } catch (err) {
+                    console.error('API call failed:', err);
+                    throw new Error('Failed to connect to the server. Make sure Google Apps Script is set up correctly.');
+                }
+            }
+
+            // ============================================================
+            // CHECK PHONE
+            // ============================================================
+            async function checkPhone(phone) {
+                return await apiCall('check', { phone });
+            }
+
+            // ============================================================
+            // REGISTER
+            // ============================================================
+            async function registerCustomer(name, phone, email) {
+                return await apiCall('register', { name, phone, email });
+            }
+
+            // ============================================================
+            // SAVE SPIN RESULT
+            // ============================================================
+            async function saveSpinResult(phone, prize) {
+                return await apiCall('spin', { phone, prize });
+            }
+
+            // ============================================================
+            // WHEEL — DRAW & SPIN
+            // ============================================================
+            const ctx = wheelCanvas.getContext('2d');
+            const numSegments = PRIZES.length;
+            const segmentAngle = (2 * Math.PI) / numSegments;
+
+            function drawWheel(rotation = 0) {
+                const w = wheelCanvas.width;
+                const h = wheelCanvas.height;
+                const cx = w / 2;
+                const cy = h / 2;
+                const radius = Math.min(w, h) / 2 - 12;
+
+                ctx.clearRect(0, 0, w, h);
+
+                const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+                grad.addColorStop(0, 'rgba(255,245,235,0.2)');
+                grad.addColorStop(1, 'rgba(61,43,31,0.05)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+                ctx.fill();
+
+                for (let i = 0; i < numSegments; i++) {
+                    const start = rotation + i * segmentAngle;
+                    const end = start + segmentAngle;
+                    const color = PRIZES[i].color;
+
+                    ctx.beginPath();
+                    ctx.moveTo(cx, cy);
+                    ctx.arc(cx, cy, radius, start, end);
+                    ctx.closePath();
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    const mid = start + segmentAngle / 2;
+                    const labelRadius = radius * 0.68;
+                    const lx = cx + Math.cos(mid) * labelRadius;
+                    const ly = cy + Math.sin(mid) * labelRadius;
+
+                    ctx.save();
+                    ctx.translate(lx, ly);
+                    ctx.rotate(mid + Math.PI / 2);
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.shadowColor = 'rgba(61,43,31,0.3)';
+                    ctx.shadowBlur = 8;
+                    ctx.font = 'bold 18px "Inter", sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    const lines = PRIZES[i].label.split(' ');
+                    if (lines.length === 1) {
+                        ctx.fillText(lines[0], 0, 0);
+                    } else {
+                        ctx.font = 'bold 14px "Inter", sans-serif';
+                        ctx.fillText(lines[0], 0, -10);
+                        ctx.fillText(lines.slice(1).join(' '), 0, 14);
+                    }
+                    ctx.restore();
+                }
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius * 0.15, 0, 2 * Math.PI);
+                ctx.fillStyle = 'rgba(61,43,31,0.05)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(201,168,76,0.2)';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, 0, 2 * Math.PI);
+                ctx.strokeStyle = 'rgba(201,168,76,0.25)';
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                for (let i = 0; i < numSegments; i++) {
+                    const a = rotation + i * segmentAngle + segmentAngle / 2;
+                    const dr = radius * 0.92;
+                    const dx = cx + Math.cos(a) * dr;
+                    const dy = cy + Math.sin(a) * dr;
+                    ctx.beginPath();
+                    ctx.arc(dx, dy, 5, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                    ctx.fill();
+                }
+            }
+
+            // ============================================================
+            // SPIN WHEEL ANIMATION
+            // ============================================================
+            function spinWheel() {
+                if (wheelSpinning) return;
+                wheelSpinning = true;
+                spinBtn.disabled = true;
+                statusWheel.className = 'status-box show info';
+                statusWheelText.textContent = '🌀 Spinning the wheel ...';
+
+                const extraSpins = 6 + Math.random() * 10;
+                const targetAngle = wheelAngle + extraSpins * 2 * Math.PI + (Math.random() * 2 * Math.PI);
+                const startAngle = wheelAngle;
+                const duration = 4000 + Math.random() * 1500;
+                const startTime = performance.now();
+
+                function animate(now) {
+                    const elapsed = now - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = startAngle + (targetAngle - startAngle) * eased;
+
+                    wheelAngle = current;
+                    drawWheel(current);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        wheelAngle = current;
+                        const normalized = ((current % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+                        const pointerAngle = (3 * Math.PI) / 2;
+                        let angleFromPointer = (normalized - pointerAngle + 2 * Math.PI) % (2 * Math.PI);
+                        const segIndex = Math.floor(angleFromPointer / segmentAngle) % numSegments;
+                        const prize = PRIZES[segIndex];
+
+                        prizeResult = prize;
+                        wheelSpinning = false;
+                        spinBtn.disabled = false;
+                        statusWheel.className = 'status-box show success';
+                        statusWheelText.textContent = '🎉 You won: ' + prize.label;
+
+                        saveResult(prize.label);
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            // ============================================================
+            // SAVE RESULT & SHOW MODAL
+            // ============================================================
+            async function saveResult(prizeLabel) {
+                try {
+                    await saveSpinResult(currentPhone, prizeLabel);
+                    showResultModal(prizeLabel);
+                } catch (err) {
+                    console.error('Save result error:', err);
+                    statusWheel.className = 'status-box show error';
+                    statusWheelText.textContent = '❌ Error saving result. Please try again.';
+                    showResultModal(prizeLabel);
+                }
+            }
+
+            function showResultModal(prizeLabel) {
+                const prize = PRIZES.find(p => p.label === prizeLabel) || PRIZES[0];
+                resultEmoji.textContent = prize.emoji || '🎉';
+                resultPrizeName.textContent = prizeLabel;
+                resultSub.textContent = 'Congratulations! Visit CACOVA and enjoy your prize. ☕';
+                resultOverlay.classList.add('show');
+            }
+
+            // ============================================================
+            // RESET WHEEL
+            // ============================================================
+            function resetWheel() {
+                if (wheelSpinning) return;
+                wheelAngle = 0;
+                drawWheel(0);
+                prizeResult = null;
+                statusWheel.className = 'status-box show info';
+                statusWheelText.textContent = '🔄 Wheel reset. Click "Spin" to start.';
+            }
+
+            // ============================================================
+            // FLOW CONTROL
+            // ============================================================
+            function showStep(step) {
+                [stepPhone, stepRegister, stepWheel, stepAlreadySpun].forEach(el => el.classList.add('hidden'));
+                if (step) step.classList.remove('hidden');
+            }
+
+            async function handleCheckPhone() {
+                const phone = phoneInput.value.trim();
+                if (!phone || phone.length < 6) {
+                    showStatus(statusPhone, 'Please enter a valid phone number.', 'error');
+                    return;
+                }
+
+                setLoading(checkBtn, true);
+                hideStatus(statusPhone);
+
+                try {
+                    const result = await checkPhone(phone);
+                    console.log('Check result:', result);
+
+                    if (result.status === 'exists') {
+                        currentPhone = phone;
+                        currentName = result.name || 'Customer';
+
+                        if (result.hasSpun === true) {
+                            alreadyPrize.textContent = result.prize || '🎁';
+                            showStep(stepAlreadySpun);
+                            statusPhone.className = 'status-box';
+                        } else {
+                            showStep(stepWheel);
+                            wheelUserName.textContent = currentName;
+                            drawWheel(0);
+                            statusWheel.className = 'status-box show info';
+                            statusWheelText.textContent = '🎯 Spin the wheel now and good luck!';
+                            statusPhone.className = 'status-box';
+                        }
+                    } else if (result.status === 'not_found') {
+                        currentPhone = phone;
+                        regPhone.value = phone;
+                        regName.value = '';
+                        regEmail.value = '';
+                        showStep(stepRegister);
+                        showStatus(statusPhone, '📝 Account not found. Register now to participate.', 'info');
+                    } else {
+                        showStatus(statusPhone, '❌ Error: ' + (result.message || 'Unknown'), 'error');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showStatus(statusPhone, '❌ ' + err.message, 'error');
+                } finally {
+                    setLoading(checkBtn, false);
+                }
+            }
+
+            async function handleRegister() {
+                const name = regName.value.trim();
+                const phone = regPhone.value.trim();
+                const email = regEmail.value.trim();
+
+                if (!name || name.length < 2) {
+                    showStatus(statusRegister, 'Please enter your full name.', 'error');
+                    return;
+                }
+                if (!phone || phone.length < 6) {
+                    showStatus(statusRegister, 'Phone number is invalid.', 'error');
+                    return;
+                }
+                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showStatus(statusRegister, 'Please enter a valid email (or leave it blank).', 'error');
+                    return;
+                }
+
+                setLoading(registerBtn, true);
+                hideStatus(statusRegister);
+
+                try {
+                    const result = await registerCustomer(name, phone, email);
+                    console.log('Register result:', result);
+
+                    if (result.status === 'registered' || result.status === 'exists') {
+                        currentPhone = phone;
+                        currentName = name;
+                        showStep(stepWheel);
+                        wheelUserName.textContent = name;
+                        drawWheel(0);
+                        statusWheel.className = 'status-box show info';
+                        statusWheelText.textContent = '🎯 Registered successfully! Spin the wheel now.';
+                        statusRegister.className = 'status-box';
+                    } else {
+                        showStatus(statusRegister, '❌ Registration failed: ' + (result.message || 'Unknown'), 'error');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showStatus(statusRegister, '❌ ' + err.message, 'error');
+                } finally {
+                    setLoading(registerBtn, false);
+                }
+            }
+
+            // ============================================================
+            // EVENT LISTENERS
+            // ============================================================
+            checkBtn.addEventListener('click', handleCheckPhone);
+
+            phoneInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleCheckPhone();
+            });
+
+            registerBtn.addEventListener('click', handleRegister);
+
+            regName.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleRegister();
+            });
+            regEmail.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleRegister();
+            });
+
+            spinBtn.addEventListener('click', spinWheel);
+
+            resetSpinBtn.addEventListener('click', resetWheel);
+
+            resetAppBtn.addEventListener('click', () => {
+                showStep(stepPhone);
+                phoneInput.value = '';
+                hideStatus(statusPhone);
+                currentPhone = '';
+                currentName = '';
+                prizeResult = null;
+                resetWheel();
+            });
+
+            resultCloseBtn.addEventListener('click', () => {
+                resultOverlay.classList.remove('show');
+                showStep(stepAlreadySpun);
+                alreadyPrize.textContent = prizeResult ? prizeResult.label : '🎁';
+            });
+
+            resultOverlay.addEventListener('click', (e) => {
+                if (e.target === resultOverlay) {
+                    resultOverlay.classList.remove('show');
+                    showStep(stepAlreadySpun);
+                    alreadyPrize.textContent = prizeResult ? prizeResult.label : '🎁';
+                }
+            });
+
+            // ============================================================
+            // INIT
+            // ============================================================
+            function init() {
+                showStep(stepPhone);
+                drawWheel(0);
+                hideStatus(statusPhone);
+                hideStatus(statusRegister);
+                statusWheel.className = 'status-box';
+                phoneInput.dir = 'ltr';
+                regPhone.dir = 'ltr';
+                console.log('☕ CACOVA · Speciality Coffee');
+                console.log('📌 API URL:', API_BASE);
+                console.log('🎡 Prizes:', PRIZES.map(p => p.label).join(', '));
+            }
+
+            init();
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === ' ' && !stepWheel.classList.contains('hidden') && !spinBtn.disabled) {
+                    e.preventDefault();
+                    spinWheel();
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
